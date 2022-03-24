@@ -1,9 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const User = require("./authorModel");
-const dotenv = require("dotenv");
 const Author = require("./authorModel");
+const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
 app.use(express.json());
@@ -21,10 +20,10 @@ mongoose
     .then(() => console.log("Connected to MongoDB"));
 
 
-// Proof of connection to the database:
+// First route:
 app.get("/", (_req, res) => {
     res.send("Welcome to MongoDB");
-})
+});
 
 // Get an author by ID:
 app.get("/authors/:authorsId", async (req, res) => {
@@ -73,5 +72,5 @@ app.get("/authors/:authorsId/books", async (req, res) => {
 
 
 app.listen(8000, () => {
-    console.log("Listening on port 8000");
+    console.log("Listening on port 8000...");
 })
